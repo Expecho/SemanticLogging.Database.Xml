@@ -19,7 +19,7 @@ namespace SemanticLogging.Database.Xml
         /// <summary>
         /// Default stored procedure name used to write traces.
         /// </summary>
-        public const string DefaultStoredProcedureName = "Traces";
+        public const string DefaultStoredProcedureName = "WriteTraces";
 
         /// <summary>
         /// Subscribes to an <see cref="IObservable{EventEntry}"/> using a <see cref="XmlSqlDatabaseSink"/>.
