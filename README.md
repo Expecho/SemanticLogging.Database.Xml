@@ -8,6 +8,32 @@ This sink is also available as a Nuget package.
 Usage is the same as with the default database sink. This sink provides one additional parameter to provide the name of the stored procedure
 that is used to insert the datarecords. This makes it possible to use multiple SemanticLogging.Database.Xml sinks that writes to different tables.
 
+
+```
+            var listener1 = new ObservableEventListener();
+            listener1.LogToSqlDatabase
+                (
+                    Environment.MachineName,
+                    @"data source=.\sql2012;initial catalog=SinkTests;integrated security=True",
+                    bufferingInterval: TimeSpan.FromSeconds(5),
+                    tableName: "Others",
+                    storedProcedureName: "WriteOthers"
+                );
+            listener1.EnableEvents(MyEventSource1.Log, EventLevel.LogAlways);
+
+            var listener2 = new ObservableEventListener();
+            listener2.LogToSqlDatabase
+                (
+                    Environment.MachineName,
+                    @"data source=.\sql2012;initial catalog=SinkTests;integrated security=True",
+                    bufferingInterval: TimeSpan.FromSeconds(5),
+                    tableName: "Sessions",
+                    storedProcedureName: "WriteSessions"
+                );
+            listener2.EnableEvents(MyEventSource2.Log, EventLevel.LogAlways);
+```
+
+
 ## How do I contribute?
 
 Please see [CONTRIBUTE.md](/CONTRIBUTE.md) for more details.
