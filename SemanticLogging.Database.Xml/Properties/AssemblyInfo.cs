@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SemanticLogging.Database.Xml")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Enterprise Library Semantic Logging Sink for Sql Server using Xml")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("De Heer Software")]
 [assembly: AssemblyProduct("SemanticLogging.Database.Xml")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
