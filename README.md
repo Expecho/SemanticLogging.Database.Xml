@@ -6,7 +6,7 @@ This sink is also available as a Nuget package.
 
 ## Usage
 Usage is the same as with the default database sink. This sink provides one additional parameter to provide the name of the stored procedure
-that is used to insert the datarecords. This makes it possible to use multiple SemanticLogging.Database.Xml sinks that writes to different tables.
+that is used to insert the datarecords. This makes it possible to use multiple SemanticLogging.Database.Xml sinks that writes to different tables:
 
 
 ```
