@@ -16,7 +16,7 @@ namespace SemanticLogging.Database.Xml.Utility
         internal static SqlMetaData[] SqlMetaData;
         internal static string[] Fields;
 
-        internal static void BuildSqlMetaData()
+        static EventEntryExtensions()
         {
             if (SqlMetaData != null)
             {
@@ -48,8 +48,6 @@ namespace SemanticLogging.Database.Xml.Utility
 
         internal static SqlDataRecord ToSqlDataRecord(this EventEntry record, string instanceName)
         {
-            BuildSqlMetaData();
-
             var sqlDataRecord = new SqlDataRecord(SqlMetaData);
 
             sqlDataRecord.SetValue(0, instanceName ?? string.Empty);
