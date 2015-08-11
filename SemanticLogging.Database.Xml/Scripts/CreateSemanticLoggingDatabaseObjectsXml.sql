@@ -25,12 +25,14 @@ CREATE TYPE TracesType AS TABLE
 
 GO
 
-CREATE PROCEDURE [dbo].[WriteTraces]
+-- The name of this stored procedure should match to the storedProcedureName parameter when creating the sink
+CREATE PROCEDURE [dbo].[WriteTraces]  
 (
   @InsertTraces TracesType READONLY
 )
 AS
 BEGIN
+-- The name of this destination table should match to the tableName parameter when creating the sink
   INSERT INTO [Traces] (
 		[InstanceName],
 		[ProviderId],
@@ -53,6 +55,8 @@ BEGIN
 END
 
 GO
+
+-- The name of this table should match to the tableName parameter when creating the sink
 CREATE TABLE [dbo].[Traces](
 	[id] [bigint] IDENTITY(1,1) NOT NULL,
 	[InstanceName] [nvarchar](1000) NOT NULL,
