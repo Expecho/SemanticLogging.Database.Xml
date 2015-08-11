@@ -32,7 +32,16 @@ that is used to insert the datarecords. This makes it possible to use multiple S
                 );
             listener2.EnableEvents(MyEventSource2.Log, EventLevel.LogAlways);
 ```
+## Query payload
 
+Since the payload is stored in an xml column it is easy to query, for example:
+
+```
+SELECT
+	FormattedMessage,
+	Payload.value('(/Payload/sampleProperty/text())[1]', 'nvarchar(100)') as member,
+FROM Traces
+```
 
 ## How do I contribute?
 
