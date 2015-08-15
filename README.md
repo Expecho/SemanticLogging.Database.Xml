@@ -1,3 +1,5 @@
+
+TEST
 ## XmlSqlDatabaseSink
 XmlSqlDatabaseSink  is a sink for the Semantic Logging Application Block that exposes Event Source events to an Sql Server database.
 The default database sink uses a Json document to store the payload data whereas this sink uses an xml document to store the payload data.
