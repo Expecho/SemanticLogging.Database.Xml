@@ -9,7 +9,7 @@ Usage is the same as with the default database sink. This sink provides one addi
 that is used to insert the datarecords. This makes it possible to use multiple XmlSqlDatabaseSink instances that writes to different tables:
 
 
-```
+```c#
             var listener1 = new ObservableEventListener();
             listener1.LogToSqlDatabase
                 (
@@ -36,7 +36,7 @@ that is used to insert the datarecords. This makes it possible to use multiple X
 
 Since the payload is stored in an xml column it is easy to query, for example:
 
-```
+```sql
 SELECT
 	FormattedMessage,
 	Payload.value('(/Payload/sampleProperty/text())[1]', 'nvarchar(100)') as member,
@@ -47,7 +47,7 @@ FROM Traces
 
 A sample configuration for out-of-process logging using a windows service (see https://msdn.microsoft.com/en-us/library/dn774996(v=pandp.20).aspx):
 
-```
+```xml
 
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration xmlns="http://schemas.microsoft.com/practices/2013/entlib/semanticlogging/etw"
