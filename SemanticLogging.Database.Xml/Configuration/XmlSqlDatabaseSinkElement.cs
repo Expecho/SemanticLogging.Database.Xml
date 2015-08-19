@@ -9,7 +9,7 @@ namespace SemanticLogging.Database.Xml.Configuration
 {
     internal class XmlSqlDatabaseSinkElement : ISinkElement
     {
-        private readonly XName sinkName = XName.Get("xmlSqlDatabaseSink", Constants.Namespace);
+        private readonly XName sinkName = XName.Get("xmlSqlDatabaseSink", "urn:dhs.sinks.xmlSqlDatabaseSink");
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Validated with Guard class")]
         public bool CanCreateSink(XElement element)
