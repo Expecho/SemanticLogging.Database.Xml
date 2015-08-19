@@ -45,7 +45,7 @@ FROM Traces
 
 ## Out-of-process logging
 
-A sample configuration for out-of-process logging using a windows service:
+A sample configuration for out-of-process logging using a windows service (see https://msdn.microsoft.com/en-us/library/dn774996(v=pandp.20).aspx):
 
 ```
 
