@@ -43,6 +43,37 @@ SELECT
 FROM Traces
 ```
 
+## Out-of-process logging
+
+A sample configuration for out-of-process logging using a windows service:
+
+```
+
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns="http://schemas.microsoft.com/practices/2013/entlib/semanticlogging/etw"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xmlns:etw="http://schemas.microsoft.com/practices/2013/entlib/semanticlogging/etw"
+               xsi:schemaLocation="http://schemas.microsoft.com/practices/2013/entlib/semanticlogging/etw SemanticLogging-svc.xsd">
+  
+  <sinks>
+    <xmlSqlDatabaseSink xmlns="urn:dhs.sinks.xmlSqlDatabaseSink" name="xmlSqlDatabaseSink" type ="SemanticLogging.Database.Xml.XmlSqlDatabaseSink, SemanticLogging.Database.Xml"
+		instanceName="localhost"
+		connectionString="Data Source=.\sql2012;Initial Catalog=SinkTests;Persist Security Info=True;Integrated Security=True;MultipleActiveResultSets=True"
+		tableName="Traces"
+		storedProcedureName="WriteTraces"
+		bufferingIntervalInSeconds="30"
+		bufferingCount="100"
+		bufferingFlushAllTimeoutInSeconds="5"
+		maxBufferSize="3000">
+		<etw:sources>
+			<etw:eventSource name="DeHeerSoftware-PlanCare2" level="Warning" />
+		</etw:sources>
+	</xmlSqlDatabaseSink>
+  </sinks>
+</configuration>
+
+```
+
 ## How do I contribute?
 
 Please see [CONTRIBUTE.md](/CONTRIBUTE.md) for more details.
