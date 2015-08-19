@@ -1,12 +1,12 @@
-## SemanticLogging.Database.Xml
-SemanticLogging.Database.Xml is a sink for the Semantic Logging Application Block that exposes Event Source events to an Sql Server database.
+## XmlSqlDatabaseSink
+XmlSqlDatabaseSink  is a sink for the Semantic Logging Application Block that exposes Event Source events to an Sql Server database.
 The default database sink uses a Json document to store the payload data whereas this sink uses an xml document to store the payload data.
 
-This sink is also available as a Nuget package.
+This sink is also available as a Nuget package: https://www.nuget.org/packages/SemanticLogging.Database.Xml/
 
 ## Usage
 Usage is the same as with the default database sink. This sink provides one additional parameter to provide the name of the stored procedure
-that is used to insert the datarecords. This makes it possible to use multiple SemanticLogging.Database.Xml sinks that writes to different tables:
+that is used to insert the datarecords. This makes it possible to use multiple XmlSqlDatabaseSink instances that writes to different tables:
 
 
 ```
@@ -32,7 +32,47 @@ that is used to insert the datarecords. This makes it possible to use multiple S
                 );
             listener2.EnableEvents(MyEventSource2.Log, EventLevel.LogAlways);
 ```
+## Query payload
 
+Since the payload is stored in an xml column it is easy to query, for example:
+
+```
+SELECT
+	FormattedMessage,
+	Payload.value('(/Payload/sampleProperty/text())[1]', 'nvarchar(100)') as member,
+FROM Traces
+```
+
+## Out-of-process logging
+
+A sample configuration for out-of-process logging using a windows service:
+
+```
+
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns="http://schemas.microsoft.com/practices/2013/entlib/semanticlogging/etw"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xmlns:etw="http://schemas.microsoft.com/practices/2013/entlib/semanticlogging/etw"
+               xsi:schemaLocation="http://schemas.microsoft.com/practices/2013/entlib/semanticlogging/etw SemanticLogging-svc.xsd">
+  
+  <sinks>
+    <xmlSqlDatabaseSink xmlns="urn:dhs.sinks.xmlSqlDatabaseSink" name="xmlSqlDatabaseSink" type ="SemanticLogging.Database.Xml.XmlSqlDatabaseSink, SemanticLogging.Database.Xml"
+		instanceName="localhost"
+		connectionString="Data Source=.\sql2012;Initial Catalog=SinkTests;Persist Security Info=True;Integrated Security=True;MultipleActiveResultSets=True"
+		tableName="Traces"
+		storedProcedureName="WriteTraces"
+		bufferingIntervalInSeconds="30"
+		bufferingCount="100"
+		bufferingFlushAllTimeoutInSeconds="5"
+		maxBufferSize="3000">
+		<etw:sources>
+			<etw:eventSource name="DeHeerSoftware-PlanCare2" level="Warning" />
+		</etw:sources>
+	</xmlSqlDatabaseSink>
+  </sinks>
+</configuration>
+
+```
 
 ## How do I contribute?
 
