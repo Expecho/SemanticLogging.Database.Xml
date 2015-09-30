@@ -44,7 +44,7 @@ namespace SemanticLogging.Database.Xml
             Guard.ArgumentNotNullOrEmpty(instanceName, "instanceName");
             Guard.ArgumentNotNullOrEmpty(connectionString, "connectionString");
             Guard.ArgumentNotNullOrEmpty(tableName, "tableName");
-            Guard.ArgumentNotNullOrEmpty(tableName, "storedProcedureName");
+            Guard.ArgumentNotNullOrEmpty(storedProcedureName, "storedProcedureName");
             Guard.ArgumentIsValidTimeout(onCompletedTimeout, "onCompletedTimeout");
             ValidateSqlConnectionString(connectionString, "connectionString");
 

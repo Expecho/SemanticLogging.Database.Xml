@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SemanticLogging.Database.Xml")]
-[assembly: AssemblyDescription("Enterprise Library Semantic Logging Sink for Sql Server using Xml")]
+[assembly: AssemblyTitle("SemanticLogging.Database.Xml.Tests")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("De Heer Software")]
-[assembly: AssemblyProduct("SemanticLogging.Database.Xml")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SemanticLogging.Database.Xml.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,9 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("31f2180a-f403-496b-ac9b-d832f27704e6")]
-
-[assembly: InternalsVisibleTo("SemanticLogging.Database.Xml.Tests")]
+[assembly: Guid("08984a3d-3d68-42b3-b20e-c9d0fa9e1180")]
 
 // Version information for an assembly consists of the following four values:
 //
