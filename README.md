@@ -1,5 +1,5 @@
-[## XmlSqlDatabaseSink
-XmlSqlDatabaseSink  is a sink for the Semantic Logging Application Block](https://msdn.microsoft.com/en-us/library/dn775014(v=pandp.20).aspx) that exposes Event Source events to an Sql Server database.
+## XmlSqlDatabaseSink
+XmlSqlDatabaseSink  is a sink for the [Semantic Logging Application Block](https://msdn.microsoft.com/en-us/library/dn775014(v=pandp.20).aspx) that exposes Event Source events to an Sql Server database.
 The default database sink uses a Json document to store the payload data whereas this sink uses an xml document to store the payload data.
 
 This sink is also available as a Nuget package: https://www.nuget.org/packages/SemanticLogging.Database.Xml/
